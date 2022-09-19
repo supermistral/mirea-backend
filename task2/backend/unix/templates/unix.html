@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Information through unix commands</title>
+</head>
+<body style="font-family:sans-serif;">
+    <h1>Info panel using Unix commands</h1>
+    <div style="max-width:600px;padding:0 1em;">
+        {% for cmd in commands %}
+            <div style="margin:1em 0;">
+                <pre><div style="width:4em;display:inline-block;"><b>server$</b></div> {{ cmd.name }}</pre>
+                <pre style="white-space:pre-wrap;word-wrap:break-word;margin-left:5em;">{{ cmd.output }}</pre>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

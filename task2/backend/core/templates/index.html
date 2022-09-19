@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Hello world page</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+</head>
+<body>
+    <h1>Таблица пользователей данного продукта</h1>
+    <table>
+        <tr><th>Id</th><th>Name</th><th>Surname</th></tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.surname }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

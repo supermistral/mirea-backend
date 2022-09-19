@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drawer</title>
+</head>
+<body>
+    <h1>Drawer</h1>
+    <div>
+        <svg width="{{ size.0 }}" height="{{ size.1 }}">
+        {% autoescape off %}
+            <{{ shape_code }} style="fill:rgb({{ color }});" stroke-width="1" stroke="black" />
+        {% endautoescape %}
+        </svg>
+    </div>
+</body>
+</html>
