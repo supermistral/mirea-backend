@@ -24,10 +24,13 @@ def index(request):
     if array is None:
         raise BadRequest("'array' parameter is required")
     
-    try:
-        nums = list(map(int, array.split(',')))
-    except Exception as e:
-        raise BadRequest("Invalid value of 'array' parameter. Please, type numbers separated by commas")
+    nums = []
+    for sym in array.split(','):
+        try:
+            formatted_sym = int(sym)
+        except Exception:
+            formatted_sym = sym
+        nums.append(str(formatted_sym))
 
     quick_sort(0, len(nums) - 1, nums)
 
