@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  django-apache:
+    build: ./django-apache
+    volumes:
+      - ./django-apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./django-apache/vhost.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+      - ./django-apache/app:/usr/local/apache2/htdocs/app
+    env_file:
+      - ./.dev.env
+    depends_on:
+      - database
+      - nginx
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx/data:/etc/nginx/html
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/app.conf
+    ports:
+      - 8000:80
+    depends_on:
+      - database
+
+  database:
+    image: postgres:12-alpine
+    env_file:
+      - ./.db.env
+    stop_grace_period: 30s
