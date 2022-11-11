@@ -1,0 +1,22 @@
+:root {
+    --text-color: #000;
+    --text-color-dark: #fff;
+
+    --bg-color: #fff;
+    --bg-color-dark: #222;
+}
+
+a:visited {
+    --text-color-dark: rgb(255, 255, 181);
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+[data-theme=dark],
+[data-theme=dark] a {
+    color: var(--text-color-dark);
+    background-color: var(--bg-color-dark);
+}

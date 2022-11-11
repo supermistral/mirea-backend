@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Строительный магазин - Каталог</title>
+</head>
+<body>
+    <h1>Строительный магазин</h1>
+    <h3>Каталог</h3>
+    <p>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Наименование</th>
+                    <th>Цена</th>
+                </tr>
+
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price }}</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </p>
+    <p><a href="/">Вернуться на главную</a></p>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'adaptive/base.html' %}
+
+
+{% block content %}
+
+{% with username=request.COOKIES.username city=request.COOKIES.city %}
+<p>
+    Добро пожаловать на адаптивную страницу{% if username %}, <b>{{ username }}</b>{% endif %}
+</p>
+{% if city %}
+    <p>
+        Кажется, вы из города <u>{% for tmp_city in USER_DATA_KEYS.city.data %}{% if tmp_city.0 == city %}{{ tmp_city.1 }}{% endif %}{% endfor %}</u>
+    </p>
+{% endif %}
+<p><a href="{% url 'pdf_files' %}">Перейти к загрузке файлов</a></p>
+{% endwith %}
+
+{% endblock %}
