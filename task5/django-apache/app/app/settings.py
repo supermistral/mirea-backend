@@ -138,10 +138,6 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'static'
 
-STATICFILES_DIRS = [
-   BASE_DIR / 'static',
-]
-
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -164,8 +160,9 @@ CACHES = {
 }
 
 
-# User data keys in cookies
+# Adaptive app settings
 
+# User data keys in cookies
 USER_DATA_KEYS = {
     'theme': {
         'type': 'select',
@@ -191,3 +188,5 @@ USER_DATA_KEYS = {
         'default': None,
     },
 }
+
+SESSION_FILES_ROOT = MEDIA_ROOT / 'session'

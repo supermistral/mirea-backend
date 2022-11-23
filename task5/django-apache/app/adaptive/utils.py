@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 from django.conf import settings
 from django.core.files.uploadedfile import UploadedFile
@@ -15,21 +15,20 @@ def save_file(path: str, file: UploadedFile) -> None:
 
 
 def save_file_by_session_id(session_id: str, file: UploadedFile) -> None:
-    path = Path(settings.MEDIA_ROOT, session_id, file.name)
+    path = Path(settings.SESSION_FILES_ROOT, session_id, file.name)
     return save_file(path, file)
 
 
 def get_file_by_session_id(session_id: str, filename: str) -> Optional[Path]:
-    path = Path(settings.MEDIA_ROOT, session_id, filename)
-    print(path)
+    path = Path(settings.SESSION_FILES_ROOT, session_id, filename)
     return path if path.is_file() else None
 
 
 def get_files_by_session_id(session_id: str) -> List[str]:
-    folder = Path(settings.MEDIA_ROOT, session_id)
+    folder = Path(settings.SESSION_FILES_ROOT, session_id)
 
     if folder.is_dir():
-        return [f.name 
+        return [f.name
                 for f in folder.iterdir()
                 if f.is_file()]
     return []
