@@ -1,0 +1,49 @@
+{% load static adaptive_tags %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Строительный магазин - Адаптив</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+{% with theme=request.COOKIES.theme %}
+<body data-theme="{% if theme == 'dark' %}dark{% else %}light{% endif %}">
+
+    <h1>Адаптивная страница</h1>
+    <div style="display: inline-flex;">
+        {% for key, user_data_value in USER_DATA_KEYS.items %}
+            <div style="margin: 0 1em;">
+                <div>{{ user_data_value.title }}</div>
+                <div>
+                    <form action="{% url 'user_data' key=key %}" method="POST">
+                        {% csrf_token %}
+                        <input id="input-{{ key }}-next" name="next" type="text" value="{{ request.get_full_path }}" hidden>
+                        
+                        {% if user_data_value.type == 'select' %}
+                            <select id="select-{{ key }}" name="{{ key }}" onchange="this.form.submit()">
+                                {% for option in user_data_value.data %}
+                                    <option value="{{ option.0 }}"{% if request.COOKIES|get_item:key == option.0 %} selected{% endif %}>
+                                        {{ option.1 }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        {% else %}
+                            <input id="input-{{ key }}" name="{{ key }}" type="text" minlength="3" size="15" required>
+                            <button>Ввести</button>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <p><a href="/">Вернуться на главную</a></p>
+
+    <div style="font-size:20px;margin: 1em 0;">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+{% endwith %}
+</html>

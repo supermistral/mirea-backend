@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Строительный магазин - Статистика</title>
+</head>
+<body>
+    <h1>Строительный магазин</h1>
+    <p><a href="/">Вернуться на главную</a></p>
+    <h2>Статистика</h2>
+    <div>
+        {% if is_base64 %}
+            {% for image in images %}
+                <div>
+                    <img src="data:image/png;base64,{{ image }}" />
+                </div>
+            {% endfor %}
+        {% else %}
+            {% for image in images %}
+                <div>
+                    <img src="{{ image }}" />
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <h2>Данные - {{ data|length }} строк</h2>
+    <div>
+        <table>
+            <tbody>
+                <tr>
+                    {% for key in data.0.keys %}
+                        <th>{{ key }}</th>
+                    {% endfor %}
+                </tr>
+                {% for row in data %}
+                    <tr>
+                        {% for value in row.values %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
