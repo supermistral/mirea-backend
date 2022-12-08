@@ -1,0 +1,43 @@
+{% extends 'adaptive/base.html' %}
+
+
+{% block content %}
+
+<div>
+    <h3>Загрузка PDF-файлов</h3>
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Загрузить">
+        </form>
+    </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+<div>
+    <h3>Список ваших файлов</h3>
+    <div>
+        {% for file in files %}
+        <div>
+            <a href="{% url 'download_pdf_file' filename=file %}">{{ file }}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .errorlist {
+        color: rgb(204, 147, 147);
+    }
+    .messages {
+        color: rgb(135, 187, 135);
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+[
+    {
+        "model": "api.product",
+        "pk": 1,
+        "fields": {
+            "name": "Дверь входная",
+            "price": 17490,
+            "quantity": 10
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 2,
+        "fields": {
+            "name": "Светильник светодиодный",
+            "price": 749,
+            "quantity": 20
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 3,
+        "fields": {
+            "name": "Шпаклевка полимерная",
+            "price": 632,
+            "quantity": 30
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 4,
+        "fields": {
+            "name": "Мембрана звукоизоляционная",
+            "price": 1719,
+            "quantity": 25
+        }
+    },
+    {
+        "model": "api.customer",
+        "pk": 1,
+        "fields": {
+            "email": "email1@email.com",
+            "name": "Customer-1"
+        }
+    },
+    {
+        "model": "api.customer",
+        "pk": 2,
+        "fields": {
+            "email": "email2@email.com",
+            "name": "Customer-2"
+        }
+    }
+]

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Строительный магазин - Администрирование</title>
+</head>
+<body>
+    <h1>Строительный магазин</h1>
+    <h2>Администрирование</h2>
+    <h3>Список пользователей</h3>
+    <p>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Email</th>
+                    <th>Username</th>
+                </tr>
+
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.username }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </p>
+    <p><a href="/">Вернуться на главную</a></p>
+</body>
+</html>
